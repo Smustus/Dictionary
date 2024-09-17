@@ -4,6 +4,7 @@ import { fetchWord } from '../../utilities/fetch';
 import { letterValidation } from '../../utilities/validation';
 import Input from '../Input/Input';
 import glas from '../../assets/magnifyingGlassWhite.svg';
+import { firstLetterUC } from '../../utilities/formatting';
 
 interface DropdownSearchProps {
   setActiveWord: React.Dispatch<React.SetStateAction<WordDefinition | null>>;
@@ -64,7 +65,7 @@ const DropdownSearch: React.FC<DropdownSearchProps> = ({setActiveWord}) => {
         <ul className="suggestions-dropdown" ref={dropdownRef}>
           {suggestions.map((suggestion, index) => (
             <li key={index} onClick={() => handleSuggestionClick(suggestion)}>
-              {suggestion}
+              {firstLetterUC(suggestion)}
             </li>
           ))}
         </ul>

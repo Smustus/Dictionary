@@ -35,7 +35,7 @@ function App() {
       <header>
         <h1>Dictionary</h1>
         <section className='header_themeToggle'>
-          <p>Dark Theme</p>
+          <p>Theme</p>
           <label className="switch">
             <input type="checkbox" onClick={(e) => toggleTheme(e)} />
             <span className="slider round"></span>

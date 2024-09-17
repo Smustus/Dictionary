@@ -12,7 +12,7 @@
 :root {
   --background-color: rgb(255, 255, 255);
   --text-color: rgb(0, 0, 0);
-  --button-background: rgb(136, 178, 255);
+  --button-background: rgb(87, 146, 255);
   --button-hover-background: rgba(136, 178, 255, 0.9);
   --card-background-light: #fff;
   --border-color-light: #ccc;
@@ -75,7 +75,7 @@ header {
       left: 0;
       right: 0;
       bottom: 0;
-      background-color: rgb(136, 178, 255);
+      background-color: var(--button-background);
       -webkit-transition: .4s;
       transition: .4s;
     }

@@ -1,5 +1,6 @@
 import React from 'react'
 import './DictionaryCard.css';
+import { firstLetterUC } from '../../utilities/formatting';
 
 interface DictionaryCardProps {
   activeWord: WordDefinition | null;
@@ -28,16 +29,17 @@ const DictionaryCard: React.FC<DictionaryCardProps> = ({activeWord, setSavedWord
   return (
     <article className="dictionaryCard">
       <section className='dictionaryCard_titleNSaveBtn'>
-        <h2>{`Word: ${activeWord.word}`}</h2>
+        <h2>{`Word: ${firstLetterUC(activeWord.word)}`}</h2>
         <button onClick={() => handleSaveWord(activeWord.word)}>Save to favorites</button>
       </section>
 
       <section className='dictionaryCard_meaning'>
+  
         <h4>Meanings:</h4>
         <hr />
         {activeWord.meanings.map((meaning, index) => (
           <div key={index}>
-            <h3>{meaning.partOfSpeech}</h3>
+            <h3>{firstLetterUC(meaning.partOfSpeech)}</h3>
             {meaning.definitions.map((definition, defIndex) => (
               <p key={defIndex}>{definition.definition}</p>
             ))}

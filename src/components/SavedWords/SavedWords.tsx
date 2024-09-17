@@ -2,6 +2,7 @@ import React from 'react'
 import './SavedWords.css';
 import { fetchWord } from '../../utilities/fetch';
 import trashcan from '../../assets/trashcan.svg';
+import { firstLetterUC } from '../../utilities/formatting';
 
 interface SavedWordsProps {
   setActiveWord: React.Dispatch<React.SetStateAction<WordDefinition | null>>;
@@ -36,18 +37,18 @@ const SavedWords: React.FC<SavedWordsProps> = ({setActiveWord, setSavedWords, sa
         
         <ul className='savedWordsContainer_list'>
         {
-        savedWords.map((word, index) => {
-          return (
-            <article className='list_card' key={`word-${index}`}>
-              <li className='card_savedWord' onClick={() => handleOnClick(word)}>{word}</li>
-              <button className='card_savedWordDeleteBtn' onClick={() => handleDelete(word)}>
-                <figure className="card_svg">
-                  <img src={trashcan} alt="X" />
-                </figure>
-              </button>
-            </article>
-          )
-        })
+          savedWords.map((word, index) => {
+            return (
+              <article className='list_card' key={`word-${index}`}>
+                <li className='card_savedWord' onClick={() => handleOnClick(word)}>{firstLetterUC(word)}</li>
+                <button className='card_savedWordDeleteBtn' onClick={() => handleDelete(word)}>
+                  <figure className="card_svg">
+                    <img src={trashcan} alt="X" />
+                  </figure>
+                </button>
+              </article>
+            )
+          })
         }
         </ul>
     </section>
