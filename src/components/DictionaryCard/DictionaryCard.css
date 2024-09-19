@@ -17,7 +17,7 @@ body.dark-theme .dictionaryCard {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 0px 0px 15px 15px;
+  margin: 0px 0px 15px 0px;
 }
 
 .dictionaryCard_titleNSaveBtn h2 {

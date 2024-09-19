@@ -36,13 +36,20 @@ body.dark-theme .savedWordsContainer {
   font-weight: 600;
 }
 
+.list_card:hover {
+  background-color: var(--button-background);
+  background-color: rgb(226, 226, 226);
+}
+
 body.dark-theme .list_card {
   background-color: var(--card-background-dark);
 }
 
-.list_card:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+body.dark-theme .list_card:hover {
+  background-color: var(--button-background);
+  background-color: rgb(71, 71, 71);
 }
+
 
 .card_savedWord {
   font-size: 1.2rem;

@@ -9,6 +9,10 @@ function App() {
   const [activeWord, setActiveWord] = useState<WordDefinition | null>(null);
   // State to manage the list of saved words.
   const [savedWords, setSavedWords] = useState<string[]>([]);
+  const [theme, setTheme] = useState('light');
+
+  //State to set the potential error, currently used to display if input is missing
+  const [error, setError] = useState<string | null>(null);
 
   //UseEffect to initialize the component with data from sessionStorage and localStorage. Initiates or loads the saved words from sessionStorage so the list persists across page reloads. Loads the saved theme (dark/light) from localStorage and applies it.
   useEffect(() => {
@@ -20,15 +24,19 @@ function App() {
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme) {
       document.body.classList.toggle('dark-theme', savedTheme === 'dark');
+      setTheme(savedTheme)
     }
+    
   }, []);
 
   //Function to handle when the user toggles between dark and light theme and save the current choice in localstorage
-  const toggleTheme = (e: any) => {
-    const newTheme = e.target.checked ? 'dark' : 'light';
+  const toggleTheme = (e: React.MouseEvent<HTMLInputElement>) => {
+    const newTheme = (e.target as HTMLInputElement).checked ? 'dark' : 'light';
     document.body.classList.toggle('dark-theme', newTheme === 'dark');
     localStorage.setItem('theme', newTheme);
+    setTheme(newTheme)
   };
+
  
   return (
     <>
@@ -37,7 +45,7 @@ function App() {
         <section className='header_themeToggle'>
           <p>Theme</p>
           <label className="switch">
-            <input type="checkbox" onClick={(e) => toggleTheme(e)} />
+            <input type="checkbox" checked={theme === 'dark'} onClick={(e) => toggleTheme(e)} />
             <span className="slider round"></span>
           </label>
         </section>

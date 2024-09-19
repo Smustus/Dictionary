@@ -14,8 +14,8 @@
   --text-color: rgb(0, 0, 0);
   --button-background: rgb(87, 146, 255);
   --button-hover-background: rgba(136, 178, 255, 0.9);
-  --card-background-light: #fff;
   --border-color-light: #ccc;
+  --card-background-light: #fff;
 }
 
 .dark-theme {
