@@ -11,9 +11,6 @@ function App() {
   const [savedWords, setSavedWords] = useState<string[]>([]);
   const [theme, setTheme] = useState('light');
 
-  //State to set the potential error, currently used to display if input is missing
-  const [error, setError] = useState<string | null>(null);
-
   //UseEffect to initialize the component with data from sessionStorage and localStorage. Initiates or loads the saved words from sessionStorage so the list persists across page reloads. Loads the saved theme (dark/light) from localStorage and applies it.
   useEffect(() => {
     const storedSavedWords: string[] = JSON.parse(sessionStorage.getItem('savedWords') || "[]");
@@ -37,7 +34,6 @@ function App() {
     setTheme(newTheme)
   };
 
- 
   return (
     <>
       <header>
@@ -56,6 +52,7 @@ function App() {
         <DictionaryCard activeWord={activeWord} setSavedWords={setSavedWords} />
         <SavedWords setActiveWord={setActiveWord} setSavedWords={setSavedWords} savedWords={savedWords} />
       </main>
+      
     </>
   )
 }

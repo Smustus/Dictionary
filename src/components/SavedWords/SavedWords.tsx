@@ -28,8 +28,6 @@ const SavedWords: React.FC<SavedWordsProps> = ({setActiveWord, setSavedWords, sa
     sessionStorage.setItem('savedWords', JSON.stringify(newSavedWords));
   }
 
-
-
   return (
     savedWords.length > 0 ? (
     <section className='savedWordsContainer'>

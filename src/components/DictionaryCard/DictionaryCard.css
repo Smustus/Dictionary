@@ -42,7 +42,7 @@ body.dark-theme .dictionaryCard {
 
 .dictionaryCard_meaning h4, .dictionaryCard_pronun h4 {
   font-size: 1.2rem;
-  margin-bottom: 10px;
+  padding-bottom: 10px;
 }
 
 .dictionaryCard_meaning hr, .dictionaryCard_pronun hr {
@@ -102,6 +102,6 @@ body.dark-theme .dictionaryCard_meaning hr, body.dark-theme .dictionaryCard_pron
   }
 
   .dictionaryCard_titleNSaveBtn button {
-    margin-top: 10px;
+    margin: 10px 0px;
   }
 }

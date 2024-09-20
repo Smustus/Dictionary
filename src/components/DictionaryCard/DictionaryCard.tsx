@@ -10,18 +10,20 @@ interface DictionaryCardProps {
 const DictionaryCard: React.FC<DictionaryCardProps> = ({activeWord, setSavedWords}) => {
   console.log(activeWord);
 
-  //function to save a word favorite unless its already present in the list
+  //Function to save a word favorite unless its already present in the list
   const handleSaveWord = (word: string) => {
     const savedWords: string[] = JSON.parse(sessionStorage.getItem('savedWords') || '[]');
   
     if (!savedWords.includes(word)) {
       const newSavedWords = [...savedWords, word]
+      console.log(newSavedWords);
+      
       sessionStorage.setItem('savedWords', JSON.stringify(newSavedWords));
       setSavedWords(newSavedWords);
     }
   };
   
-  //if no active word is passed return nothing
+  //If no active word is passed return nothing
   if (!activeWord) {
     return
   }
@@ -54,8 +56,7 @@ const DictionaryCard: React.FC<DictionaryCardProps> = ({activeWord, setSavedWord
           <div className='dictionaryCard_audioContainer' key={index}>
             {phonetic.audio.length > 0 ?
             <div>
-              <audio key={phonetic.audio} controls>
-                <source src={phonetic.audio} type="audio/mpeg" />
+              <audio role='audio' key={phonetic.audio} controls src={phonetic.audio}>
                 Audio element not supported
               </audio>
             </div> : 

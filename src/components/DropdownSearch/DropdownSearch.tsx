@@ -54,7 +54,7 @@ const DropdownSearch: React.FC<DropdownSearchProps> = ({setActiveWord}) => {
     };
   }, []);
 
-  //Handles clicks outside the suggestions dropdown. If a user clicks outside the dropdown, the suggestions list will close.
+  //Handles clicks outside the suggestions dropdown. If the dropdown is present and a user clicks outside the dropdown, the suggestions list will close.
   const handleClickOutside = (event: MouseEvent) => {
     if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
       setSuggestions([]);
@@ -77,6 +77,7 @@ const DropdownSearch: React.FC<DropdownSearchProps> = ({setActiveWord}) => {
       console.log(results);
       if(results.title === "No Definitions Found"){
         setError(results.message)
+        return
       }
 
       if(results.length > 1){
@@ -97,7 +98,7 @@ const DropdownSearch: React.FC<DropdownSearchProps> = ({setActiveWord}) => {
     setSearchValue('')
   };
   
-  // Perform validation
+  //Perform validation
   const validateInput = (value: any) => {
     const error = inputValidation(String(value));
     console.log(error);
@@ -105,7 +106,6 @@ const DropdownSearch: React.FC<DropdownSearchProps> = ({setActiveWord}) => {
     if (setError) {
       setError(error);
     }
-    // Prevent further onChange propagation on error
     if (error) {
       return;
     }
