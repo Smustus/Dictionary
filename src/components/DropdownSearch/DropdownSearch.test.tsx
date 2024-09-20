@@ -3,9 +3,10 @@ import userEvent from '@testing-library/user-event';
 import DropdownSearch from './DropdownSearch';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
-const mockSetActiveWord = vi.fn();
 
 describe('DropdownSearch component', () => {
+  const mockSetActiveWord = vi.fn();
+
   beforeEach(() => {
     render(<DropdownSearch setActiveWord={mockSetActiveWord} />);
   })

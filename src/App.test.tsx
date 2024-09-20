@@ -1,39 +1,16 @@
 import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import App from './App';
-import { beforeEach, describe, expect, it, vi } from 'vitest';
-
-// Mock localStorage and sessionStorage
-beforeEach(() => {
-  render(<App />);
-  const localStorageMock = (() => {
-    let store: { [key: string]: string } = {};
-    return {
-      getItem: (key: string) => store[key] || null,
-      setItem: (key: string, value: string) => {
-        store[key] = value;
-      },
-      clear: () => {
-        store = {};
-      },
-    };
-  })();
-
-  Object.defineProperty(window, 'localStorage', {
-    value: localStorageMock,
-  });
-
-  Object.defineProperty(window, 'sessionStorage', {
-    value: localStorageMock,
-  });
-
-  localStorage.clear();
-  sessionStorage.clear();
-});
+import { beforeEach, describe, expect, it } from 'vitest';
 
 describe('App Component', () => {
- /*  it('App renders properly with default theme(light) and no saved words', () => {
-    
+
+  beforeEach(() => {
+    sessionStorage.clear();
+  });
+
+  it('App renders properly with default theme(light) and no saved words', () => {
+    render(<App />);
     const header = screen.getByRole('heading', { name: /Dictionary/i });
     expect(header).toBeInTheDocument();
 
@@ -45,7 +22,7 @@ describe('App Component', () => {
   });
 
   it('User is able to toggle between light and dark theme', async () => {
-    
+    render(<App />);
     const themeCheckbox = screen.getByRole('checkbox');
 
     expect(themeCheckbox).not.toBeChecked();
@@ -63,15 +40,15 @@ describe('App Component', () => {
   });
    
   it('Properly loads saved words from session storage upon mounting', async () => {
-    
     sessionStorage.setItem('savedWords', JSON.stringify(['apple', 'banana']));
     render(<App />);
+    
     expect(screen.getByText(/Apple/i)).toBeInTheDocument();
     expect(screen.getByText(/Banana/i)).toBeInTheDocument();
   }); 
   
   it('Search for a word, add the word to saved words, is displayed and persists in session storage', async () => {
-
+    render(<App />);
     const input = screen.getByPlaceholderText(/search/i);
     await userEvent.type(input, 'banana');
 
@@ -86,12 +63,10 @@ describe('App Component', () => {
     expect(savedWord).toBeInTheDocument();
   
     expect(JSON.parse(sessionStorage.getItem('savedWords')!)).toEqual(['banana']);
-  });*/
+  });
   
   it('Assess if the user can properly remove saved words and that the session storage is updated', async () => {
-
     sessionStorage.setItem('savedWords', JSON.stringify(['apple']));
-
     render(<App />);
 
     const savedWord = screen.getByText('Apple');
