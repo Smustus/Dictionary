@@ -14,7 +14,6 @@ function App() {
   //UseEffect to initialize the component with data from sessionStorage and localStorage. Initiates or loads the saved words from sessionStorage so the list persists across page reloads. Loads the saved theme (dark/light) from localStorage and applies it.
   useEffect(() => {
     const storedSavedWords: string[] = JSON.parse(sessionStorage.getItem('savedWords') || "[]");
-    console.log(storedSavedWords);
     setSavedWords(storedSavedWords)
 
     //Saves the theme in localstorage so the user dont need to switch everytime they enter the page

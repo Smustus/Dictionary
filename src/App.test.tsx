@@ -62,6 +62,7 @@ describe('App Component', () => {
     const savedWord = within(savedWordsList).getByText(/banana/i);
     expect(savedWord).toBeInTheDocument();
   
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     expect(JSON.parse(sessionStorage.getItem('savedWords')!)).toEqual(['banana']);
   });
   

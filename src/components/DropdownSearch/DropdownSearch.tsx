@@ -27,10 +27,6 @@ const DropdownSearch: React.FC<DropdownSearchProps> = ({setActiveWord}) => {
   //State to set the potential error, currently used to display if input is missing
   const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    console.log(searchValue); 
-  }, [searchValue]);
-
    //Adds event listener to detect clicks outside of the dropdown to close the suggestions and when the components unmounts its removed
   useEffect(() => {
     const handleKeyPress = (e: KeyboardEvent) => {
@@ -70,11 +66,14 @@ const DropdownSearch: React.FC<DropdownSearchProps> = ({setActiveWord}) => {
   const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     
+    if(!searchValue){
+      return
+    } 
+
     validateInput(searchValue)
     
     if(searchValue && searchValue.length > 1) { 
       const results = await fetchWord(searchValue);
-      console.log(results);
       if(results.title === "No Definitions Found"){
         setError(results.message)
         return
@@ -91,7 +90,6 @@ const DropdownSearch: React.FC<DropdownSearchProps> = ({setActiveWord}) => {
 
   //When a user clicks on a suggestion. It fetches the full word object from the API
   const handleSuggestionClick = async (suggestion: string) => {
-    console.log(suggestion);
     const word = await fetchWord(suggestion);
     setActiveWord(word[0]);
     setSuggestions([]);
@@ -99,9 +97,8 @@ const DropdownSearch: React.FC<DropdownSearchProps> = ({setActiveWord}) => {
   };
   
   //Perform validation
-  const validateInput = (value: any) => {
-    const error = inputValidation(String(value));
-    console.log(error);
+  const validateInput = (value: string) => {
+    const error = inputValidation(value);
     
     if (setError) {
       setError(error);
@@ -116,7 +113,7 @@ const DropdownSearch: React.FC<DropdownSearchProps> = ({setActiveWord}) => {
       <form onSubmit={(e) => handleFormSubmit(e)}>
         <Input type='text' id='search' name='search' placeholder='Search' value={searchValue} onChange={handleInputChange} img={glas}>
           {suggestions.length > 0 && (
-          <ul className="suggestions-dropdown" ref={dropdownRef}>
+          <ul className="suggestionsDropdown" ref={dropdownRef}>
             {suggestions.map((suggestion, index) => (
               <li key={index} onClick={() => handleSuggestionClick(suggestion)}>
                 {firstLetterUC(suggestion)}

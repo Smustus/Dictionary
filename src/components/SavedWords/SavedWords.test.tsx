@@ -64,9 +64,11 @@ describe('SavedWords Component', () => {
     await userEvent.click(deleteButton[0]);
 
     expect(setSavedWords).toHaveBeenCalledWith(['banana']);
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     expect(JSON.parse(sessionStorage.getItem('savedWords')!)).toEqual(['banana']);
     
     unmount()
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     savedWords = JSON.parse(sessionStorage.getItem('savedWords')!);
     render(<SavedWords setActiveWord={setActiveWord} setSavedWords={setSavedWords} savedWords={savedWords} />);
 

@@ -13,7 +13,7 @@
     position: relative;
   }
 
-  .suggestions-dropdown {
+  .suggestionsDropdown {
     background-color: rgb(61, 61, 61);
     position: absolute;
     top: 49px;
