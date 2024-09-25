@@ -1,7 +1,8 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import DictionaryCard from './DictionaryCard';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import mockData from '../../mocks/mockData.json';
+import userEvent from '@testing-library/user-event';
 
 describe('DictionaryCard component', () => {
   const mockSetSavedWords = vi.fn();
@@ -29,11 +30,11 @@ describe('DictionaryCard component', () => {
     const saveButton = screen.getByRole('button', { name: /Save to favorites/i });
     expect(saveButton).toBeInTheDocument();
 
-    fireEvent.click(saveButton);
+    await userEvent.click(saveButton);
     expect(sessionStorage.getItem('savedWords')).toBe(JSON.stringify(['banana']));
     expect(mockSetSavedWords).toHaveBeenCalledWith(['banana'])
 
-    fireEvent.click(saveButton);
+    await userEvent.click(saveButton);
     expect(sessionStorage.getItem('savedWords')).toBe(JSON.stringify(['banana']));
   });
 

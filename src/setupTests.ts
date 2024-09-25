@@ -6,9 +6,7 @@ import { handlers } from './mocks/handlers'
 
 export const server = setupServer(...handlers);
 
-afterEach(() => {
-  cleanup();
-})
+afterEach(() => cleanup());
 
 beforeAll(() => server.listen());
 

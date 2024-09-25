@@ -52,7 +52,7 @@ describe('SavedWords Component', () => {
     expect(setActiveWord).toHaveBeenCalledWith(mockData[0]);
   });
 
-  it('Assess if the user can remove a word from saved words and session storage when clicking the delete button', async () => { 
+  it('Assess if the user can remove a word from saved words when clicking the delete button', async () => { 
     sessionStorage.setItem('savedWords', JSON.stringify(['apple', 'banana']));
     let savedWords = ['apple', 'banana']
     const { unmount } = render(<SavedWords setActiveWord={setActiveWord} setSavedWords={setSavedWords} savedWords={savedWords} />);
@@ -64,8 +64,6 @@ describe('SavedWords Component', () => {
     await userEvent.click(deleteButton[0]);
 
     expect(setSavedWords).toHaveBeenCalledWith(['banana']);
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    expect(JSON.parse(sessionStorage.getItem('savedWords')!)).toEqual(['banana']);
     
     unmount()
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion

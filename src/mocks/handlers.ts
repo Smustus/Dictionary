@@ -2,10 +2,12 @@ import { http, HttpResponse } from 'msw'
 import mockData from './mockData.json'
  
 export const handlers = [
-  http.get('https://api.dictionaryapi.dev/api/v2/entries/en/:word', (req) => {    
+  http.get(`https://api.dictionaryapi.dev/api/v2/entries/en/:word`, (req) => {    
     const { word } = req.params;
+    
+    if(word === 'banana') return HttpResponse.json([mockData[0]], { status: 200 })
 
-    if(word === 'banana') return HttpResponse.json(mockData, { status: 200 })
+    if(word === 'charlie') return HttpResponse.json([mockData[1]], { status: 200 })
 
     if(word === 'ble') return HttpResponse.json({ 
         title: "No Definitions Found", 
@@ -25,5 +27,6 @@ export const handlers = [
         word: 'he',
       }
     ], { status: 200 })
-  }),
+
+  })
 ]

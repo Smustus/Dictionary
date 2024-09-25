@@ -8,7 +8,6 @@ interface DictionaryCardProps {
 };
 
 const DictionaryCard: React.FC<DictionaryCardProps> = ({activeWord, setSavedWords}) => {
-  console.log(activeWord);
 
   //Function to save a word favorite unless its already present in the list
   const handleSaveWord = (word: string) => {
@@ -16,7 +15,6 @@ const DictionaryCard: React.FC<DictionaryCardProps> = ({activeWord, setSavedWord
   
     if (!savedWords.includes(word)) {
       const newSavedWords = [...savedWords, word]
-      console.log(newSavedWords);
       
       sessionStorage.setItem('savedWords', JSON.stringify(newSavedWords));
       setSavedWords(newSavedWords);

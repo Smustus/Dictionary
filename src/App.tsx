@@ -22,7 +22,6 @@ function App() {
       document.body.classList.toggle('dark-theme', savedTheme === 'dark');
       setTheme(savedTheme)
     }
-    
   }, []);
 
   //Function to handle when the user toggles between dark and light theme and save the current choice in localstorage
@@ -40,7 +39,7 @@ function App() {
         <section className='header_themeToggle'>
           <p>Theme</p>
           <label className="switch">
-            <input type="checkbox" checked={theme === 'dark'} onClick={(e) => toggleTheme(e)} />
+            <input type="checkbox" defaultChecked={theme === 'dark'} onClick={(e) => toggleTheme(e)} />
             <span className="slider round"></span>
           </label>
         </section>

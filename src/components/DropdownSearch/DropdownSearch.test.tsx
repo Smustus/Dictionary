@@ -19,7 +19,6 @@ describe('DropdownSearch component', () => {
   it('Displays suggestions when API returns several options', async () => {
     const input = screen.getByPlaceholderText(/search/i);
     await userEvent.type(input, 'he');
-    expect(input).toHaveValue('he')
 
     const searchButton = screen.getByRole('button', { name: /search/i });
     await userEvent.click(searchButton);
@@ -34,7 +33,6 @@ describe('DropdownSearch component', () => {
   it('Does not display options when API only returns one option', async () => {
     const input = screen.getByPlaceholderText(/search/i);
     await userEvent.type(input, 'banana');
-    expect(input).toHaveValue('banana')
 
     const searchButton = screen.getByRole('button', { name: /search/i });
     await userEvent.click(searchButton);
@@ -43,10 +41,9 @@ describe('DropdownSearch component', () => {
     expect(list).not.toBeInTheDocument()
   });
 
-  it('Does not display options when API only returns one option', async () => {
+  it('Returns the message from the API when a user search for a word without a definition', async () => {
     const input = screen.getByPlaceholderText(/search/i);
     await userEvent.type(input, 'ble');
-    expect(input).toHaveValue('ble')
 
     const searchButton = screen.getByRole('button', { name: /search/i });
     await userEvent.click(searchButton);

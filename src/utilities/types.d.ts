@@ -1,7 +1,8 @@
 /* eslint-disable @typescript-eslint/consistent-type-definitions */
+
 type WordDefinition = {
   word: string;
-  phonetic: string;
+  phonetic?: string;
   phonetics: Phonetic[];
   meanings: Meaning[];
   license: License;
@@ -9,7 +10,7 @@ type WordDefinition = {
 };
 
 type Phonetic = {
-  text: string;
+  text?: string;
   audio: string;
   sourceUrl: string;
   license?: License;

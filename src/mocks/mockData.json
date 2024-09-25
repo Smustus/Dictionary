@@ -91,5 +91,69 @@
     "sourceUrls": [
       "https://en.wiktionary.org/wiki/banana"
     ]
+  },
+  {
+    "word": "charlie",
+    "phonetics": [
+      {
+        "audio": "https://api.dictionaryapi.dev/media/pronunciations/en/charlie-au.mp3",
+        "sourceUrl": "https://commons.wikimedia.org/w/index.php?curid=79268274",
+        "license": {
+          "name": "BY-SA 4.0",
+          "url": "https://creativecommons.org/licenses/by-sa/4.0"
+        }
+      }
+    ],
+    "meanings": [
+      {
+        "partOfSpeech": "noun",
+        "definitions": [
+          {
+            "definition": "An enemy; the Vietcong; short for Victor Charlie.",
+            "synonyms": [],
+            "antonyms": []
+          },
+          {
+            "definition": "Cocaine.",
+            "synonyms": [],
+            "antonyms": []
+          },
+          {
+            "definition": "(often with \"right\" and/or \"proper\") A fool.",
+            "synonyms": [],
+            "antonyms": [],
+            "example": "You look a right Charlie in that clown outfit! — Yes, we make a right pair of Charlies."
+          },
+          {
+            "definition": "(usually in the plural) A woman's breast.",
+            "synonyms": [],
+            "antonyms": []
+          },
+          {
+            "definition": "A nightwatchman.",
+            "synonyms": [],
+            "antonyms": []
+          },
+          {
+            "definition": "A short, pointed beard, like that of King Charles I.",
+            "synonyms": [],
+            "antonyms": []
+          }
+        ],
+        "synonyms": [
+          "snow",
+          "fool"
+        ],
+        "antonyms": []
+      }
+    ],
+    "license": {
+      "name": "CC BY-SA 3.0",
+      "url": "https://creativecommons.org/licenses/by-sa/3.0"
+    },
+    "sourceUrls": [
+      "https://en.wiktionary.org/wiki/Charlie",
+      "https://en.wiktionary.org/wiki/charlie"
+    ]
   }
 ]
