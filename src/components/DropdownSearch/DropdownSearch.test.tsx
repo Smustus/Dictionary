@@ -2,6 +2,7 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import DropdownSearch from './DropdownSearch';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
+import mockData from '../../mocks/mockData.json';
 
 
 describe('DropdownSearch component', () => {
@@ -16,12 +17,13 @@ describe('DropdownSearch component', () => {
     expect(screen.getByRole('button', { name: /search/i })).toBeInTheDocument();
   });
 
-  it('Displays suggestions when API returns several options', async () => {
+  it('Displays a dropdown with suggestions when the API returns several results', async () => {
     const input = screen.getByPlaceholderText(/search/i);
     await userEvent.type(input, 'he');
 
     const searchButton = screen.getByRole('button', { name: /search/i });
     await userEvent.click(searchButton);
+    expect(mockSetActiveWord).not.toHaveBeenCalled();
 
     const list = await screen.findByRole('list');
     expect(list).toBeInTheDocument();
@@ -36,6 +38,7 @@ describe('DropdownSearch component', () => {
 
     const searchButton = screen.getByRole('button', { name: /search/i });
     await userEvent.click(searchButton);
+    expect(mockSetActiveWord).toHaveBeenCalledWith(mockData[0]);
 
     const list = screen.queryByRole('list');
     expect(list).not.toBeInTheDocument()

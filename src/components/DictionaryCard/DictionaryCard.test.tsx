@@ -13,7 +13,7 @@ describe('DictionaryCard component', () => {
   });
 
   it('Renders meanings segment', () => {    
-    expect(screen.getByText(/Meanings:/i)).toBeInTheDocument();
+    expect(screen.getByText(/Meanings/i)).toBeInTheDocument();
     expect(screen.getByText(/noun/i)).toBeInTheDocument();
     expect(screen.getByText('The penis.')).toBeInTheDocument();
     expect(screen.getByText(/adjective/i)).toBeInTheDocument();

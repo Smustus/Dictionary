@@ -14,7 +14,7 @@
   }
 
   .suggestionsDropdown {
-    background-color: rgb(61, 61, 61);
+    background-color: var(--dropdown-and-input);
     position: absolute;
     top: 49px;
     right: 0px;
@@ -40,7 +40,6 @@
   }
 
   .submitBtn {
-    color: white;
     margin: 6px 0px 0px 0px;
   }
 }

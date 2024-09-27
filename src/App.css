@@ -12,19 +12,21 @@
 :root {
   --background-color: rgb(255, 255, 255);
   --text-color: rgb(0, 0, 0);
-  --button-background: rgb(87, 146, 255);
+  --button-background: linear-gradient(200deg, rgba(90,150,255,0.8) 25%, rgba(80,135,235,0.8) 50%, rgba(70, 120, 215, 0.8) 75%);
   --button-hover-background: rgba(136, 178, 255, 0.9);
-  --border-color-light: #ccc;
-  --card-background-light: #fff;
+  --border-color-light: rgb(204, 204, 204);
+  --card-background-light: rgb(255, 255, 255);
+  --dropdown-and-input: rgb(60, 60, 60);
+  --dropdown-and-input-hover: rgb(50, 50, 50);
 }
 
 .dark-theme {
   --background-color: rgb(31, 31, 31);
   --text-color: rgb(255, 255, 255);
-  --button-background: rgba(149, 85, 233, 0.8);
+  --button-background: linear-gradient(200deg, rgba(150,90,230,0.80) 25%, rgba(140,80,220,0.80) 50%, rgba(130,70,200,0.80) 75%);
   --button-hover-background: rgba(149, 85, 233, 0.6);
-  --border-color-dark: #444;
-  --card-background-dark: #2c2c2c;
+  --border-color-dark: rgb(68, 68, 68);
+  --card-background-dark: rgb(50, 50, 50);
 }
 
 * {
@@ -53,7 +55,7 @@ header {
   .header_themeToggle {
     position: absolute;
     top: 20px;
-    right: 20px;
+    right: 40px;
     z-index: 50;
     font-weight: 600;
 
@@ -78,7 +80,7 @@ header {
       right: 0;
       /* stylelint-disable-next-line declaration-block-no-redundant-longhand-properties */
       bottom: 0;
-      background-color: var(--button-background);
+      background: var(--button-background);
       -webkit-transition: .4s;
       transition: .4s;
     }
@@ -96,7 +98,7 @@ header {
     }
     
     input:checked + .slider {
-      background-color: rgba(149, 85, 233, 0.8);
+      background-color: var(--button-background);
     }
     
     input:focus + .slider {
@@ -121,8 +123,8 @@ header {
 }
 
 button {
-  background-color: var(--button-background);
-  color: var(--text-color);  
+  background: var(--button-background);
+  color: white;  
   font-weight: 600;
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
   cursor: pointer;
@@ -134,7 +136,7 @@ button {
 
 button:hover {
   background-color: var(--button-hover-background);
-  color: var(--text-color);
+  color: white;
   box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.5);
 }
 
@@ -150,12 +152,12 @@ main {
 
 a {
   font-weight: 600;
-  color: #060c2e;
+  color: var(--text-color);
   text-decoration: inherit;
 }
 
 a:hover {
-  color: rgb(37, 42, 146);
+  color: rgb(57, 63, 189);
 }
 
 

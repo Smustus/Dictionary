@@ -9,6 +9,7 @@ function App() {
   const [activeWord, setActiveWord] = useState<WordDefinition | null>(null);
   // State to manage the list of saved words.
   const [savedWords, setSavedWords] = useState<string[]>([]);
+  //State to manage the light theme
   const [theme, setTheme] = useState('light');
 
   //UseEffect to initialize the component with data from sessionStorage and localStorage. Initiates or loads the saved words from sessionStorage so the list persists across page reloads. Loads the saved theme (dark/light) from localStorage and applies it.

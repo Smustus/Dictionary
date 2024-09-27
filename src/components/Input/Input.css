@@ -1,6 +1,6 @@
 .inputContainer {
   position: relative;
-  background-color: rgb(49, 49, 49);
+  background-color: var(--dropdown-and-input-hover);
   min-width: 200px;
   max-width: 400px;
   padding: 4px 6px;
@@ -21,17 +21,17 @@
     padding: 6px 12px 6px 0;
     width: 100%;
     font-size: 1.2rem;
+    color: rgba(255, 255, 255, 1);
   }
 
   input:focus-within {
     background-color: transparent;
     outline: none;
-    
   }
 }
 
 .inputContainer:focus-within {
-  background-color: rgb(61, 61, 61);
+  background-color: var(--dropdown-and-input);
   box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.5);
 }
 

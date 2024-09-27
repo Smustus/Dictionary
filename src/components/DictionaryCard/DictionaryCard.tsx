@@ -9,7 +9,7 @@ interface DictionaryCardProps {
 
 const DictionaryCard: React.FC<DictionaryCardProps> = ({activeWord, setSavedWords}) => {
 
-  //Function to save a word favorite unless its already present in the list
+  //Function to save a word to favorites unless its already present in the list
   const handleSaveWord = (word: string) => {
     const savedWords: string[] = JSON.parse(sessionStorage.getItem('savedWords') || '[]');
   
@@ -35,7 +35,7 @@ const DictionaryCard: React.FC<DictionaryCardProps> = ({activeWord, setSavedWord
 
       <section className='dictionaryCard_meaning'>
   
-        <h4>Meanings:</h4>
+        <h4>Meanings</h4>
         <hr />
         {activeWord.meanings.map((meaning, index) => (
           <div key={index}>

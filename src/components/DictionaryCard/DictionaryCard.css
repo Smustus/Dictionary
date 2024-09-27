@@ -1,5 +1,5 @@
 .dictionaryCard {
-  background-color: var(--card-background-light);
+  background: var(--card-background-light);
   border: 1px solid var(--border-color-light);
   border-radius: 10px;
   padding: 20px;
@@ -9,7 +9,7 @@
 }
 
 body.dark-theme .dictionaryCard {
-  background-color: var(--card-background-dark);
+  background: var(--card-background-dark);
   border-color: var(--border-color-dark);
 }
 
@@ -27,7 +27,6 @@ body.dark-theme .dictionaryCard {
 .dictionaryCard_titleNSaveBtn button {
   transition: background-color 0.3s;
   margin: 0px 0px 0px 15px;
-  color: rgb(255, 255, 255);
 }
 
 .dictionaryCard_meaning {
@@ -79,7 +78,6 @@ body.dark-theme .dictionaryCard_meaning hr, body.dark-theme .dictionaryCard_pron
 }
 
 .dictionaryCard_source a {
-  color: var(--primary-accent);
   text-decoration: none;
 }
 

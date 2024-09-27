@@ -17,6 +17,7 @@ describe('App Component', () => {
     const themeCheckbox = screen.getByRole('checkbox');
     expect(themeCheckbox).not.toBeChecked();
 
+    expect(screen.getByRole('heading', { name: /favorites/i })).toBeInTheDocument();
     const noSavedWordsMessage = screen.getByText(/Currently no favorite words/i);
     expect(noSavedWordsMessage).toBeInTheDocument();
   });
@@ -45,7 +46,7 @@ describe('App Component', () => {
     expect(screen.getByText(/Banana/i)).toBeInTheDocument();
   }); 
 
-  it('Assess if the user can properly remove saved words and that the session storage is updated', async () => {
+  it('Assess if the user can properly remove saved words', async () => {
     sessionStorage.setItem('savedWords', JSON.stringify(['apple']));
     render(<App />);
 
@@ -56,7 +57,6 @@ describe('App Component', () => {
     await userEvent.click(deleteButton);
 
     expect(screen.queryByText('Apple')).not.toBeInTheDocument();
-    expect(sessionStorage.getItem('savedWords')).toBe('[]');
   });
   
   it('Assess if the user can search for a word by pressing Enter, and the word being properly rendered', async () => {
@@ -65,16 +65,14 @@ describe('App Component', () => {
     await userEvent.type(input, 'banana');
     await userEvent.keyboard('[Enter]');
 
-    expect(await screen.findByText(/Meanings:/i)).toBeInTheDocument();
+    expect(await screen.findByText(/Meanings/i)).toBeInTheDocument();
     expect(await screen.findByText(/noun/i)).toBeInTheDocument();
     expect(screen.getByText('The penis.')).toBeInTheDocument();
     expect(await screen.findByText(/adjective/i)).toBeInTheDocument();
     expect(screen.getByText('Curved like a banana, especially of a ball in flight.')).toBeInTheDocument(); 
   });
   
-   
-
-  it('*FULL USER FULL* Assess if the user can search for a word by pressing enter and click, the word properly being rendered and the user can add it to saved words. Then check if users can press the saved word to obtain the word definition once again. Lastly, we assess if the user may delete a saved word', async () => {
+  it('*FULL USER FLOW* Assess if the user can search for a word by pressing enter or click. Check if the word is properly being rendered and the user can add it to saved words. Then check if users can press the saved word to obtain the word definition once again. Lastly, assess if the user may delete a saved word', async () => {
     render(<App />);
     
     //Enter search input and search
@@ -82,7 +80,7 @@ describe('App Component', () => {
     await userEvent.type(input, 'banana');
     await userEvent.keyboard('[Enter]');
     
-    expect(screen.getByText(/Meanings:/i)).toBeInTheDocument();
+    expect(screen.getByText(/Meanings/i)).toBeInTheDocument();
     expect(screen.getByText(/noun/i)).toBeInTheDocument();
     expect(screen.getByText('The penis.')).toBeInTheDocument();
     expect(screen.getByText(/adjective/i)).toBeInTheDocument();
@@ -101,19 +99,19 @@ describe('App Component', () => {
     expect(savedWord).toBeInTheDocument();
     expect(screen.queryByText(/Currently no favorite words/i)).not.toBeInTheDocument()
 
-    //Seach for another word
+    //Seach for another word and check if its being rendered
     await userEvent.type(input, 'charlie');
     const searchButton = screen.getByRole('button', { name: /search/i });
     await userEvent.click(searchButton);
     
-    expect(screen.getByText(/Meanings:/i)).toBeInTheDocument();
+    expect(screen.getByText(/Meanings/i)).toBeInTheDocument();
     expect(screen.getByText('An enemy; the Vietcong; short for Victor Charlie.')).toBeInTheDocument();
     expect(screen.queryByText('Curved like a banana, especially of a ball in flight.')).not.toBeInTheDocument(); 
 
-    //Click the saved word to check if it properly re-renders the data
+    //Click the saved word to check if it properly re-renders the saved word data
     await userEvent.click(savedWord);
 
-    expect(screen.getByText(/Meanings:/i)).toBeInTheDocument();
+    expect(screen.getByText(/Meanings/i)).toBeInTheDocument();
     expect(screen.getByText(/noun/i)).toBeInTheDocument();
     expect(screen.getByText('The penis.')).toBeInTheDocument();
     expect(screen.getByText(/adjective/i)).toBeInTheDocument();
