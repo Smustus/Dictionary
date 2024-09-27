@@ -65,12 +65,8 @@ const DropdownSearch: React.FC<DropdownSearchProps> = ({setActiveWord}) => {
   //Handles form submission, validates the input to update the potential error msg, then calls the API with the search value. If no definition is returned display related error msg. If the API returns several options, display a list of options for the user, otherwise instantly display the search result.
   const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    
-    if(!searchValue){
-      return
-    } 
 
-    validateInput(searchValue)
+    validateInput(searchValue);
     
     if(searchValue && searchValue.length > 1) { 
       const results = await fetchWord(searchValue);
@@ -84,6 +80,7 @@ const DropdownSearch: React.FC<DropdownSearchProps> = ({setActiveWord}) => {
       } else {
         setActiveWord(results[0]);
         setSearchValue('')
+        setError('')
       }
     }
   }
@@ -97,14 +94,14 @@ const DropdownSearch: React.FC<DropdownSearchProps> = ({setActiveWord}) => {
   };
   
   //Perform validation
-  const validateInput = (value: string) => {
-    const error = inputValidation(value);
+  const validateInput = (value: string | undefined) => {
+    const error = inputValidation(value);    
     
-    if (setError) {
+    if(error) {
       setError(error);
     }
-    if (error) {
-      return;
+    if(error === null) {
+      return null;
     }
   }
 

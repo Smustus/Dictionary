@@ -54,4 +54,15 @@ describe('DropdownSearch component', () => {
     expect(screen.queryByRole('list')).not.toBeInTheDocument();
     expect(await screen.findByText(/Sorry pal, we couldn't find definitions for the word you were looking for./i)).toBeInTheDocument()
   });
+
+  it('Assert if a error msg appear when the user search with an empty input field', async () => {
+    const input = screen.getByPlaceholderText(/search/i);
+    expect(input).toHaveValue('');
+
+    const searchButton = screen.getByRole('button', { name: /search/i });
+    await userEvent.click(searchButton);
+
+    expect(screen.queryByRole('list')).not.toBeInTheDocument();
+    expect(await screen.findByText(/Please enter a word to search/i)).toBeInTheDocument()
+  });
 });
